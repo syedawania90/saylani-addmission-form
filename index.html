@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Saylani-style Admission Form — Demo</title>
+  <meta name="description" content="Admission form demo with animations and Firebase integration (Firestore + Storage)." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="image">
+        <img src="saylani.png"
+             alt="Hero" class="animate" />
+      </div>
+
+      <div class="content">
+        <div class="brand">
+          <div class="logo">SF</div>
+          <div>
+            <h1>Saylani-style Admission Form</h1>
+            <p class="lead">Apply for Mass IT Training — fill the form below. Required fields marked with *</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <form id="admissionForm" autocomplete="on" novalidate>
+          <div class="row">
+            <div>
+              <label for="fullName">Full name *</label>
+              <input id="fullName" name="fullName" type="text" required />
+            </div>
+
+            <div>
+              <label for="fatherName">Father's / Guardian's name *</label>
+              <input id="fatherName" name="fatherName" type="text" required />
+            </div>
+
+            <div>
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+
+            <div>
+              <label for="phone">Phone (WhatsApp preferred) *</label>
+              <input id="phone" name="phone" type="tel" placeholder="03XXXXXXXXX" required />
+            </div>
+
+            <div>
+              <label for="cnic">CNIC / B-Form (without dashes) *</label>
+              <input id="cnic" name="cnic" type="text" minlength="13" maxlength="13" required />
+            </div>
+
+            <div>
+              <label for="program">Choose program *</label>
+              <select id="program" name="program" required>
+                <option value="">-- Select --</option>
+                <option value="web">Web Development</option>
+                <option value="graphic">Graphic Design</option>
+                <option value="mobile">Mobile App Development</option>
+                <option value="network">Networking</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="address">Address *</label>
+              <textarea id="address" name="address" required></textarea>
+            </div>
+
+            <div>
+              <label for="education">Previous education / qualification *</label>
+              <input id="education" name="education" type="text" placeholder="e.g. Matric, Intermediate, Graduate" required />
+            </div>
+
+            <div>
+              <label for="experience">Any prior IT experience (optional)</label>
+              <input id="experience" name="experience" type="text" placeholder="e.g. basic HTML, none" />
+            </div>
+
+            <div>
+              <label for="photo">Upload photo (optional)</label>
+              <div class="file-row">
+                <div class="file-preview" id="filePreview">No photo</div>
+                <div style="flex:1">
+                  <input id="photo" name="photo" type="file" accept="image/*" />
+                  <div class="muted">Max 3 MB recommended</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="terms">Agreement *</label>
+              <div style="display:flex;gap:8px;align-items:center">
+                <input type="checkbox" id="terms" required />
+                <label for="terms" class="muted">I declare information provided is correct.</label>
+              </div>
+            </div>
+
+            <div class="full muted">
+              <strong>Privacy:</strong> Submitted data will be stored securely in Firebase Firestore. Only authorized staff should access applicant data.
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn-ghost" id="resetBtn">Reset</button>
+            <button type="submit" id="submitBtn" class="btn-primary">Submit Application</button>
+          </div>
+
+          <div id="status" class="full" style="margin-top:12px"></div>
+        </form>
+      </section>
+
+      <aside class="info">
+        <div class="summary card">
+          <h3 style="margin:0 0 8px">Before you submit</h3>
+          <ul style="margin:0;padding-left:18px;color:#374151">
+            <li>Use a real email and WhatsApp number — we may contact you.</li>
+            <li>Photo is optional but recommended for verification.</li>
+            <li>Replace Firebase config in <code>app.js</code> with your project values.</li>
+          </ul>
+        </div>
+
+        <div class="card muted">
+          <strong>Tip:</strong> For production, secure Firestore and Storage rules or use server-side validation (Cloud Functions).
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
